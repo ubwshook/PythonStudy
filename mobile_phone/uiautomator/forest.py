@@ -21,6 +21,8 @@ def get_energy(d):
 def swipe_energy(d, batch):
     if batch != 0:
         d.swipe(0.494, 0.800, 0.523, 0.370)
+        if batch == 3:
+            d.swipe(0.494, 0.800, 0.523, 0.480)
         if d.exists(scrollable=False, text="没有更多了"):
             return
 
