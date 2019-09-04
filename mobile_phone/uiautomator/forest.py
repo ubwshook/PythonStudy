@@ -23,20 +23,22 @@ def swipe_energy(d, batch):
         d.swipe(0.494, 0.800, 0.523, 0.370)
         if batch == 3:
             d.swipe(0.494, 0.800, 0.523, 0.480)
-        if d.exists(scrollable=False, text="没有更多了"):
-            return
 
     for i in range(batch * 6 + 1, (batch + 1) * 6 + 1):
-        if i == 16:
+        if i in [16,15]:
             continue
         try:
             d.xpath('//*[@resource-id="J_rank_list_append"]/android.view.View[{}]'.format(i)).click()
             time.sleep(3)
             if d.exists(scrollable=False, text="返回我的森林"):
                 d.press("back")
+                continue
             get_energy(d)
         except:
             pass
+
+    if d.exists(scrollable=False, text="没有更多了"):
+            return
 
 
 def get_all_forest(d):
